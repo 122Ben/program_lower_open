@@ -538,64 +538,9 @@
           <GroupName>SYSTEM</GroupName>
           <Files>
             <File>
-              <FileName>ADC_int.c</FileName>
+              <FileName>OpenLoop.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SYSTEM\ADC_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPIO_int.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\GPIO_int.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hall.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Hall.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hallless.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Hallless.c</FilePath>
-            </File>
-            <File>
-              <FileName>OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\OLED.c</FilePath>
-            </File>
-            <File>
-              <FileName>PI_Cale.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\PI_Cale.c</FilePath>
-            </File>
-            <File>
-              <FileName>State_Machine.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\State_Machine.c</FilePath>
-            </File>
-            <File>
-              <FileName>Tim1_ISR_MCLoop.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Tim1_ISR_MCLoop.c</FilePath>
-            </File>
-            <File>
-              <FileName>Tim1_PWM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Tim1_PWM.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>VvvfControl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\VvvfControl.c</FilePath>
-            </File>
-            <File>
-              <FileName>Test_PWM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\Test_PWM.c</FilePath>
+              <FilePath>..\SYSTEM\OpenLoop.c</FilePath>
             </File>
           </Files>
         </Group>
