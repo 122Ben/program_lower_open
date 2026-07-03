@@ -159,8 +159,8 @@ if (ss != SS_DONE)
     // === 阶段 1：静态定位 (强行吸住) ===
     if (ss == SS_ALIGN)
     {
-        MOS_Q16PWM();               // 强制定位在 A+ C-
         StateContr.Duty = ALIGN_DUTY;
+        MOS_Q16PWM();               // 强制定位在 A+ C-
 
         if (ss_ms >= 100)           // 锁 100ms 足够让水中的叶轮稳住
         {
@@ -172,7 +172,7 @@ if (ss != SS_DONE)
         return;  // 不进入速度环
     }
 
-    // === 阶段 2：开环强拖 (盲转拖动) ===
+    // === 阶段 2：开环强拖（调试模式：只要 RUN 按下就持续强制换相，不再切换到闭环） ===
     if (ss == SS_OPEN_RAMP)
     {
         StateContr.Duty = RAMP_DUTY;
@@ -192,24 +192,28 @@ if (ss != SS_DONE)
         {
             ss_ms = 0;
             ramp_step++;
-            
-            if (ramp_step >= 6) 
+
+            if (ramp_step >= 6)
             {
                 ramp_step = 0;
-                ramp_cycle++; // 完成一个电周期
-            }
-
-            // 当强拖完成指定的周期数，叶轮已经转起来了，切入闭环
-            if (ramp_cycle >= RAMP_TARGET_CYCLE)
-            {
-                ss = SS_DONE;
-                
-                // ===== 核心：无扰切换预加载 =====
-                pi_spd.Ui = RAMP_DUTY;     
-                pi_spd.OutF = RAMP_DUTY;
+                ramp_cycle++; // 完成一个电周期（仅计数，开环调试模式下不再切闭环）
             }
         }
-        return; // 不进入速度环
+        if (dbg_ms >= 50)   // 每 50ms 打印一次，方便确认开环输出是否正常
+        {
+            dbg_ms = 0;
+            SEGGER_RTT_printf(0,
+                "OPEN_LOOP duty=%d,step=%d,cycle=%d,hall=0x%02X,bus_v=%d,bus_i=%d\r\n",
+                (int)StateContr.Duty,
+                (int)ramp_step,
+                (int)ramp_cycle,
+                Hall_Three.Hall_State,
+                (int)ADCSampPare.BUS_Voltage,
+                (int)ADCSampPare.BUS_Curr
+            );
+        }
+
+        return; // 开环调试模式：一直强制换相，不进入霍尔闭环
     }
 }
 // =====（4）多步对准完成 → 正常闭环控制 =====
