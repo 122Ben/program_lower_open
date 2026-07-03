@@ -592,6 +592,11 @@
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\VvvfControl.c</FilePath>
             </File>
+            <File>
+              <FileName>Test_PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\Test_PWM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

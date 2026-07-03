@@ -46,6 +46,10 @@
 //H_PWM_L_ON驱动模式
 #define  H_PWM_L_ON
 
+//硬件测试模式：1=只跑Test_PWM.c的裸PWM测试（PA8/9/10固定20%占空比），不进入任何电机控制逻辑
+//确认高边PWM能正常输出后，改回0，恢复正常运行
+#define  HARDWARE_PWM_TEST   0
+
 #ifndef PWM_PERIOD_TICKS
 #define PWM_PERIOD_TICKS   (TIM1->ARR + 1)
 #endif

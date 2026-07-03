@@ -11,6 +11,7 @@
 #include "Power stage parameters.h"
 #include "Control stage parameters.h"
 #include "Drive parameters.h"
+#include "Test_PWM.h"
 
 #ifdef HALL
 #include "Hall.h"
@@ -36,7 +37,13 @@ extern       Hallless   Hallless_Three;
 volatile uint16_t ADC_DualConvertedValueTab[5];  //电位器接口函数
 int main(void)
 {
-	Delay(10000);	
+	Delay(10000);
+#if HARDWARE_PWM_TEST
+	Test_PWM_Init();
+	while(1)
+	{
+	}
+#endif
 	SysTickConfig();
 	StateContr.Control_Mode = LOOP;
 	PID_init();
